@@ -114,7 +114,7 @@ function openLauncher() {
     list += `
       <div style="margin-bottom:14px;">
         <b>${p.order}. ${p.name}</b><br>
-        <a href="#" onclick="openAB('http://${p.host}')">${p.host}</a>
+        <a href="http://${p.host}" target="_blank">${p.host}</a>
         <a href="#" onclick="openAB('http://${p.host}')">[about:blank]</a>
         <div style="color:${color}; font-size:14px;">${p.desc}</div>
       </div>
@@ -140,7 +140,6 @@ a { color:#4c6fff; text-decoration:none; margin-right:6px; }
 
 <h2>Proxy Launcher</h2>
 <p style="opacity:0.7;">Spam R 4 times to quickly open Google</p>
-<p style="opacity:0.7;">Not working: </p>
 
 ${list}
 
@@ -157,20 +156,8 @@ document.addEventListener("keydown",e=>{
   }
 });
 function openAB(url){
-  const x = window.open("about:blank", "_blank");
-  x.document.write(
-    "<!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<title>My Drive - Google Drive<\/title>\n" +
-    "<style>html,body{margin:0;height:100%;background:#0f1220;color:white;font-family:system-ui;}iframe{border:0;width:100%;height:100%;}</style>\n" +
-    "<\/head>\n" +
-    "<body>\n" +
-    "<iframe src='" + url + "' allow='fullscreen' referrerpolicy='no-referrer'></iframe>\n" +
-    "<\/body>\n" +
-    "<\/html>"
-  );
-  x.document.close();
+  const x=window.open("about:blank","_blank");
+  x.location=url;
 }
 <\/script>
 
