@@ -118,7 +118,7 @@ function openLauncher() {
     var color = p.order === 1 ? "red" : p.order === 2 ? "dodgerblue" : "white";
     list += '<div style="margin-bottom:14px;">';
     list += '<b>' + p.order + '. ' + p.name + '</b><br>';
-    list += '<a href="javascript:void(0)" onclick="openAB(\x27https://' + p.host + '\x27)" style="cursor:pointer;">' + p.host + '</a>';
+    list += '<a href="javascript:void(0)" onclick="openAB(\\x27https://' + p.host + '\\x27)" style="cursor:pointer;" class="proxy-link" data-name="' + p.name + '" data-host="' + p.host + '">' + p.name + '</a>';
     list += '<div style="color:' + color + '; font-size:14px;">' + p.desc + '</div>';
     list += '</div>';
   }
@@ -126,12 +126,22 @@ function openLauncher() {
   var launcherHTML = '<!DOCTYPE html><html><head><title>My Drive - Google Drive</title>';
   launcherHTML += '<style>body{background:#0f1220;color:white;font-family:system-ui;padding:24px;}';
   launcherHTML += 'a{color:#4c6fff;text-decoration:none;margin-right:6px;cursor:pointer;}';
-  launcherHTML += 'a:hover{text-decoration:underline;}</style></head><body>';
+  launcherHTML += 'a:hover{text-decoration:underline;}';
+  launcherHTML += '.toggle-btn{background:#1f233a;border:none;color:white;padding:8px 14px;border-radius:14px;cursor:pointer;position:fixed;top:20px;left:20px;}</style></head><body>';
+  launcherHTML += '<button class="toggle-btn" id="toggleBtn" onclick="toggleLinks()">Show Links</button>';
   launcherHTML += '<h2>Proxy Launcher</h2>';
   launcherHTML += '<p style="opacity:0.7;">Spam R 4 times to escape</p>';
-  launcherHTML += '<p style="opacity:0.7;">Not working: </p>';
+  launcherHTML += '<p style="color:red;">Temporarily Down: Lunar, Doge, Utopia, Bromine</p>';
+  launcherHTML += '<p style="color:yellow;font-weight:bold;">ALL PROXIES OPEN IN ABOUT:BLANK, PLEASE DON\\x27T EXPOSE LINK!!!</p>';
   launcherHTML += list;
   launcherHTML += '<scr' + 'ipt>';
+  launcherHTML += 'var showingLinks=false;';
+  launcherHTML += 'function toggleLinks(){var links=document.querySelectorAll(".proxy-link");var btn=document.getElementById("toggleBtn");';
+  launcherHTML += 'showingLinks=!showingLinks;';
+  launcherHTML += 'for(var i=0;i<links.length;i++){';
+  launcherHTML += 'if(showingLinks){links[i].textContent=links[i].getAttribute("data-host");}';
+  launcherHTML += 'else{links[i].textContent=links[i].getAttribute("data-name");}}';
+  launcherHTML += 'btn.textContent=showingLinks?"Hide Links":"Show Links";}';
   launcherHTML += 'var r=0;var rTimeout;';
   launcherHTML += 'document.addEventListener("keydown",function(e){';
   launcherHTML += 'if(e.key.toLowerCase()==="r"){r++;clearTimeout(rTimeout);';
