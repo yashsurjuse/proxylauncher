@@ -17,6 +17,7 @@ header {
   padding: 16px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 button {
@@ -24,48 +25,30 @@ button {
   border: none;
   color: white;
   padding: 8px 14px;
-  border-radius: 16px;
+  border-radius: 14px;
   cursor: pointer;
 }
 
-main {
+.center {
   height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  opacity: 0.8;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.box {
-  background: #1b1e32;
-  padding: 24px;
-  border-radius: 12px;
-  width: 280px;
+  flex-direction: column;
 }
 
 input {
-  width: 100%;
   padding: 10px;
-  margin-bottom: 12px;
+  margin: 6px 0;
+  width: 220px;
   border-radius: 8px;
   border: none;
 }
 
 .error {
-  color: #ff6b6b;
-  text-align: center;
+  color: red;
+  font-size: 14px;
   display: none;
-  font-size: 13px;
 }
 </style>
 </head>
@@ -74,25 +57,15 @@ input {
 
 <header>
   <div>Edison Learning Center</div>
-  <button onclick="openLogin()">Profile</button>
+  <button onclick="showLogin()">Log in</button>
 </header>
 
-<main>
-  Website under construction
-</main>
-
-<div class="modal" id="login">
-  <div class="box">
-    <h3 style="text-align:center;">Log in</h3>
-    <input id="u" placeholder="Username">
-    <input id="p" type="password" placeholder="Password">
-    <button style="width:100%;" onclick="login()">Log in</button>
-    <div class="error" id="err">Wrong login</div>
-  </div>
+<div class="center" id="main">
+  <div>Website under construction</div>
 </div>
 
 <script>
-/* EDITABLE PROXY LIST */
+/* PROXY LIST */
 const proxies = [
   { order: 1, name: "55gms", host: "55gms.edisonlearningcenter.me", desc: "Best for searching" },
   { order: 2, name: "bromine", host: "bromine.edisonlearningcenter.me", desc: "Fast general use" },
@@ -111,26 +84,33 @@ const proxies = [
   { order: 15, name: "void", host: "void.edisonlearningcenter.me", desc: "Last resort" }
 ];
 
-function openLogin() {
-  document.getElementById("login").style.display = "flex";
+function showLogin() {
+  document.getElementById("main").innerHTML = `
+    <input id="user" placeholder="Username">
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">Log in</button>
+    <div class="error" id="err">Wrong login</div>
+  `;
 }
 
 function login() {
-  if (u.value === "username" && p.value === "qwerty") {
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  if (u === "username" && p === "qwerty") {
     openLauncher();
-    login.style.display = "none";
   } else {
-    err.style.display = "block";
+    document.getElementById("err").style.display = "block";
   }
 }
 
 function openLauncher() {
   const w = window.open("about:blank", "_blank");
 
-  let rows = "";
+  let list = "";
   proxies.sort((a,b)=>a.order-b.order).forEach(p => {
     let color = p.order === 1 ? "red" : p.order === 2 ? "dodgerblue" : "white";
-    rows += `
+    list += `
       <div style="margin-bottom:14px;">
         <b>${p.order}. ${p.name}</b><br>
         <a href="http://${p.host}" target="_blank">${p.host}</a>
@@ -152,28 +132,30 @@ body {
   font-family:system-ui;
   padding:24px;
 }
-a { color:#4c6fff; text-decoration:none; margin-right:8px; }
+a { color:#4c6fff; text-decoration:none; margin-right:6px; }
 </style>
 </head>
 <body>
+
 <h2>Proxy Launcher</h2>
 <p style="opacity:0.7;">Spam R 4 times to open Google and close this</p>
-${rows}
+
+${list}
 
 <script>
 let r=0;
-document.addEventListener('keydown',e=>{
-  if(e.key.toLowerCase()==='r'){
+document.addEventListener("keydown",e=>{
+  if(e.key.toLowerCase()==="r"){
     r++;
     if(r>=4){
-      const g=window.open('about:blank','_blank');
-      g.location='https://google.com';
+      const g=window.open("about:blank","_blank");
+      g.location="https://google.com";
       window.close();
     }
   }
 });
 function openAB(url){
-  const x=window.open('about:blank','_blank');
+  const x=window.open("about:blank","_blank");
   x.location=url;
 }
 </script>
@@ -183,10 +165,6 @@ function openAB(url){
 `);
   w.document.close();
 }
-
-login.addEventListener("click", e => {
-  if (e.target === login) login.style.display = "none";
-});
 </script>
 
 </body>
