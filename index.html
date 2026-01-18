@@ -67,21 +67,21 @@ input {
 <script>
 /* PROXY LIST */
 const proxies = [
-  { order: 6, name: "55gms", host: "55gms.edisonlearningcenter.me", desc: "Best for searching" },
-  { order: 10, name: "bromine", host: "bromine.edisonlearningcenter.me", desc: "Fast general use" },
-  { order: 3, name: "doge", host: "doge.edisonlearningcenter.me", desc: "Best for searching, in settings please change search engine to DuckDuckGo and Proxy to Scramjet" },
-  { order: 4, name: "galaxy", host: "galaxy.edisonlearningcenter.me", desc: "Stable routing" },
-  { order: 5, name: "glint", host: "glint.edisonlearningcenter.me", desc: "Low latency" },
   { order: 1, name: "intersteller", host: "intersteller.edisonlearningcenter.me", desc: "Very Familiar" },
-  { order: 7, name: "lunar", host: "lunar.edisonlearningcenter.me", desc: "Secondary path" },
-  { order: 8, name: "petezah", host: "petezah.edisonlearningcenter.me", desc: "Fallback" },
-  { order: 9, name: "quasar", host: "quasar.edisonlearningcenter.me", desc: "High throughput" },
   { order: 2, name: "selenite", host: "selenite.edisonlearningcenter.me", desc: "Best for games" },
-  { order: 11, name: "shadow", host: "shadow.edisonlearningcenter.me", desc: "Obscure routing" },
-  { order: 12, name: "uniub", host: "uniub.edisonlearningcenter.me", desc: "Internal" },
-  { order: 13, name: "utopia", host: "utopia.edisonlearningcenter.me", desc: "Edge node" },
-  { order: 14, name: "velara", host: "velara.edisonlearningcenter.me", desc: "Spare" },
-  { order: 15, name: "void", host: "void.edisonlearningcenter.me", desc: "Last resort" }
+  { order: 3, name: "doge", host: "doge.edisonlearningcenter.me", desc: "Best for searching, in settings please change search engine to DuckDuckGo and Proxy to Scramjet" },
+  { order: 4, name: "quasar", host: "quasar.edisonlearningcenter.me", desc: "Movies, games, good search" },
+  { order: 5, name: "utopia", host: "utopia.edisonlearningcenter.me", desc: "Great overall" },
+  { order: 6, name: "void", host: "void.edisonlearningcenter.me", desc: "Great games, cool features" },
+  { order: 7, name: "55gms", host: "55gms.edisonlearningcenter.me", desc: "Overall good" },
+  { order: 8, name: "bromine", host: "bromine.edisonlearningcenter.me", desc: "Decent" },
+  { order: 9, name: "galaxy", host: "galaxy.edisonlearningcenter.me", desc: "OS-type look" },
+  { order: 10, name: "glint", host: "glint.edisonlearningcenter.me", desc: "Low latency" },
+  { order: 11, name: "lunar", host: "lunar.edisonlearningcenter.me", desc: "Great games" },
+  { order: 12, name: "petezah", host: "petezah.edisonlearningcenter.me", desc: "Good games, bad search" },
+  { order: 13, name: "shadow", host: "shadow.edisonlearningcenter.me", desc: "Mid for searching, no games" },
+  { order: 14, name: "uniub", host: "uniub.edisonlearningcenter.me", desc: "Decent overall" },
+  { order: 15, name: "velara", host: "velara.edisonlearningcenter.me", desc: "Good games" }
 ];
 
 function showLogin() {
@@ -97,7 +97,7 @@ function login() {
   const u = document.getElementById("user").value;
   const p = document.getElementById("pass").value;
 
-  if (u === "username" && p === "qwerty") {
+  if (u === "username" && p === "qwerty123") {
     openLauncher();
   } else {
     document.getElementById("err").style.display = "block";
@@ -118,7 +118,7 @@ function openLauncher() {
     var color = p.order === 1 ? "red" : p.order === 2 ? "dodgerblue" : "white";
     list += '<div style="margin-bottom:14px;">';
     list += '<b>' + p.order + '. ' + p.name + '</b><br>';
-    list += '<a href="#" onclick="openAB(\'http://' + p.host + '\'); return false;" style="cursor:pointer;">' + p.host + '</a>';
+    list += '<a href="javascript:void(0)" onclick="openAB(\x27https://' + p.host + '\x27)" style="cursor:pointer;">' + p.host + '</a>';
     list += '<div style="color:' + color + '; font-size:14px;">' + p.desc + '</div>';
     list += '</div>';
   }
@@ -129,7 +129,7 @@ function openLauncher() {
   launcherHTML += 'a:hover{text-decoration:underline;}</style></head><body>';
   launcherHTML += '<h2>Proxy Launcher</h2>';
   launcherHTML += '<p style="opacity:0.7;">Spam R 4 times to escape</p>';
-  launcherHTML += '<p style="opacity:0.7;">Not working: <a href="#" onclick="openAB(\'https://55gms.edisonlearningcenter.me\'); return false;">55gms</a></p>';
+  launcherHTML += '<p style="opacity:0.7;">Not working: </p>';
   launcherHTML += list;
   launcherHTML += '<scr' + 'ipt>';
   launcherHTML += 'var r=0;var rTimeout;';
