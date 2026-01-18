@@ -140,6 +140,7 @@ a { color:#4c6fff; text-decoration:none; margin-right:6px; }
 
 <h2>Proxy Launcher</h2>
 <p style="opacity:0.7;">Spam R 4 times to escape</p>
+<p style="opacity:0.7; font-size:12px;">Not working: </p>
 
 ${list}
 
@@ -156,8 +157,11 @@ document.addEventListener("keydown",e=>{
   }
 });
 function openAB(url){
-  const x=window.open("about:blank","_blank");
-  x.location=url;
+  const x=window.open();
+  const html=`<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=${url}"><\/head><body><\/body><\/html>`;
+  const blob=new Blob([html],{type:'text/html'});
+  const blobUrl=URL.createObjectURL(blob);
+  x.location.href=blobUrl;
 }
 <\/script>
 
