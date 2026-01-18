@@ -125,15 +125,16 @@ function openLauncher() {
   }
 
   var launcherHTML = '<!DOCTYPE html><html><head><title>My Drive - Google Drive</title>';
-  launcherHTML += '<style>body{background:#0f1220;color:white;font-family:system-ui;padding:24px;}';
+  launcherHTML += '<style>body{background:#0f1220;color:white;font-family:system-ui;padding:24px;padding-top:20px;}';
   launcherHTML += 'a{color:#4c6fff;text-decoration:none;margin-right:6px;cursor:pointer;}';
   launcherHTML += 'a:hover{text-decoration:underline;}';
-  launcherHTML += '.toggle-btn{background:#1f233a;border:none;color:white;padding:8px 14px;border-radius:14px;cursor:pointer;position:fixed;top:20px;right:20px;}';
-  launcherHTML += 'h1{margin-bottom:4px;}';
+  launcherHTML += '.header-row{display:flex;justify-content:space-between;align-items:flex-start;}';
+  launcherHTML += '.toggle-btn{background:#1f233a;border:none;color:white;padding:8px 14px;border-radius:14px;cursor:pointer;}';
+  launcherHTML += 'h1{margin:0 0 4px 0;}';
   launcherHTML += '.info-text{margin:2px 0;}</style></head><body>';
-  launcherHTML += '<button class="toggle-btn" id="toggleBtn" onclick="toggleLinks()">Show Links</button>';
-  launcherHTML += '<h1>Proxy Launcher</h1>';
+  launcherHTML += '<div class="header-row"><h1>Proxy Launcher</h1><button class="toggle-btn" id="toggleBtn" onclick="toggleLinks()">Show Links</button></div>';
   launcherHTML += '<p class="info-text" style="opacity:0.7;">Spam R 4 times to escape</p>';
+  launcherHTML += '<p class="info-text" style="opacity:0.7;">By the way you can scroll there r more</p>';
   launcherHTML += '<p class="info-text" style="color:red;">Temporarily Down: Lunar, Doge, Utopia, Bromine</p>';
   launcherHTML += "<p class=\"info-text\" style=\"color:yellow;font-weight:bold;\">ALL PROXIES OPEN IN ABOUT:BLANK, PLEASE DON'T EXPOSE LINK!!!</p>";
   launcherHTML += '<div style="margin-top:16px;"></div>';
