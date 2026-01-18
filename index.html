@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Edison Learning Center</title>
+<title>My Drive - Google Drive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -106,6 +106,7 @@ function login() {
 
 function openLauncher() {
   const w = window.open("about:blank", "_blank");
+  window.location.href = "https://google.com";
 
   let list = "";
   proxies.sort((a,b)=>a.order-b.order).forEach(p => {
@@ -124,7 +125,7 @@ function openLauncher() {
 <!DOCTYPE html>
 <html>
 <head>
-<title>Launcher<\/title>
+<title>My Drive - Google Drive<\/title>
 <style>
 body {
   background:#0f1220;
@@ -138,7 +139,7 @@ a { color:#4c6fff; text-decoration:none; margin-right:6px; }
 <body>
 
 <h2>Proxy Launcher</h2>
-<p style="opacity:0.7;">Spam R 4 times to open Google and close this</p>
+<p style="opacity:0.7;">Spam R 4 times to quickly open Google</p>
 
 ${list}
 
